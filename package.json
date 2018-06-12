@@ -1,5 +1,5 @@
 {
-  "name": "mqtt",
+  "name": "mqttt",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,13 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ng-bootstrap/ng-bootstrap": "^2.1.0",
+    "angular-2-dropdown-multiselect": "^1.8.0",
+    "angular2-multiselect-dropdown": "^2.9.0",
     "core-js": "^2.5.4",
+    "mqtt": "^2.18.0",
+    "ngx-mqtt": "^6.1.2",
+    "ngx-multiselect": "^1.1.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

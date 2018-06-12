@@ -1,0 +1,73 @@
+
+<h2>MQTT</h2>
+<form [formGroup]="mqttForm" style="margin-left: 100px;margin-right: 400px;">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="userId">User Id</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="userId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userId.errors }"  placeholder="Enter user id"/>
+          <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+              <div *ngIf="f.userId.errors.required">User Id is required</div>
+          </div>
+        </div>
+    </div>
+</form>
+<div style="margin-left: 100px;margin-right: 400px;">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="userId">Countory</label>
+    <div class="col-sm-10">
+      <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+      [settings]="dropdownSettings" 
+      (onSelect)="onItemSelect($event)" 
+      (onDeSelect)="OnItemDeSelect($event)"
+      (onSelectAll)="onSelectAll($event)"
+      (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2 col-form-div"></div>
+    <div class="col-sm-10">
+      <button class="btn btn-primary" (click)="onSubmit(mqttForm.value)" [disabled]='mqttForm.invalid'>Submit</button>
+    </div>
+    <!-- <a [routerLink]="['/register']" class="btn btn-link">Register</a> -->
+  </div>
+</div>
+
+
+
+  
+<table *ngIf="quttData" class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th>User Id</th>
+            <th>User Index</th>
+            <th>Ref user id</th>
+            <th>Name</th>
+            <th>User active</th>
+            <th>Vip</th>
+            <th>Validity enable</th>
+            <th>Date</th>
+            <th>User Pin</th>
+            <th>By pass finger</th>
+            <th>card1</th>
+            <th>card2</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{quttData['user-id']}}</td>
+            <td>{{quttData['user-index']}}</td>
+            <td>{{quttData['ref-user-id']}}</td>
+            <td>{{quttData['name']}}</td>
+            <td>{{quttData['user-active']}}</td>
+            <td>{{quttData['vip']}}</td>
+            <td>{{quttData['validity-enable']}}</td>
+            <td>{{quttData['validity-date-dd']}}-{{quttData['validity-date-mm']}}-{{quttData['validity-date-yyyy']}}</td>
+            <td>{{quttData['user-pin']}}</td>
+            <td>{{quttData['by-pass-finger']}}</td>
+            <td>{{quttData['card1']}}</td>
+            <td>{{quttData['card2']}}</td>
+          </tr>
+        </tbody>
+      </table>
+
