@@ -13,11 +13,19 @@ import { LocalAuthService, AlertService, MttqService } from './services';
 import { AppComponent } from './app.component';
 import {  LocalCommonModule } from './components';
 import { LoginComponent, HomeComponent, MqttCommunicationComponent, UserCreateComponent, NavBarComponent} from './components';
+import { CompanyCreateComponent } from './components/device-creation/company-create/company-create.component';
+import { OfficeCreateComponent } from './components/device-creation/office-create/office-create.component';
+import { ZonesCreateComponent } from './components/device-creation/zones-create/zones-create.component';
+import { LocksCreateComponent } from './components/device-creation/locks-create/locks-create.component';
 
   export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     hostname: 'lifeguard.php-dev.in',
     port: 8888,
-    path: '/'
+    path: '/',
+    protocol: 'wss',
+    rejectUnauthorized: false,
+    username : 'mqttuser',
+    password : 'Wqebak6auH9A'
   };
 
 @NgModule({
@@ -29,6 +37,10 @@ import { LoginComponent, HomeComponent, MqttCommunicationComponent, UserCreateCo
     MqttCommunicationComponent, 
     UserCreateComponent, 
     NavBarComponent,
+    CompanyCreateComponent,
+    OfficeCreateComponent,
+    ZonesCreateComponent,
+    LocksCreateComponent
   ],
   imports: [
     BrowserModule,

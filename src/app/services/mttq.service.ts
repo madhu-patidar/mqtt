@@ -10,14 +10,6 @@ export class MttqService {
   private subscription: Subscription;
   public message: string;
 
-  mqttOption: IMqttServiceOptions = {
-    hostname: 'lifeguard.php-dev.in',
-    port: 8883,
-    path: '/',
-    username : 'mqttuser',
-    password : 'Wqebak6auH9A'
-  };
-
   constructor(
    private _mqttService : MqttService
   ) { }
