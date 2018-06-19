@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 import { MqttService, IMqttMessage, IMqttServiceOptions } from 'ngx-mqtt';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
-import { COMPANIES, COMPANY_DROPDOWN_SETINGS } from '../../constants/drop-down.constants';
+import * as CryptoJS from 'crypto-js';
+import { COMPANIES, COMPANY_DROPDOWN_SETINGS } from './../constants/drop-down.constants';
 
 @Component({
   selector: 'app-mqtt-communication',
@@ -17,8 +17,7 @@ export class MqttCommunicationComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  quttData : any;
-  quttData2 : any;
+  mqttData : any;
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
@@ -27,18 +26,16 @@ export class MqttCommunicationComponent implements OnInit {
 
   private subscription: Subscription;
   public message: string;
-  mqttOption: IMqttServiceOptions = {
-    hostname: '111lifeguard.php-dev.in',
-    port: 1111,
-    path: '/'
-  };
+  type = 'success';
+  alertMessage = "success";
+  showAlert :boolean = false;
+
   constructor(
     private _mqttService: MqttService,
     private formBuilder: FormBuilder,
     private router: Router,
     // private mttqService: MttqService
   ){
-
     this.dropdownList = COMPANIES
     this.dropdownSettings = COMPANY_DROPDOWN_SETINGS
   }
@@ -50,7 +47,7 @@ export class MqttCommunicationComponent implements OnInit {
         userId: ['', Validators.required],
       });
     }else{
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/lifeguard/login']);
     }
 
    
@@ -86,7 +83,7 @@ export class MqttCommunicationComponent implements OnInit {
   get f() { return this.mqttForm.controls; }
 
   onSubmit(formData:any) {
-    let quttData;
+    let mqttData;
     let msg = this.msg
     this.submitted = true;
     
@@ -97,21 +94,34 @@ export class MqttCommunicationComponent implements OnInit {
     }
 
     msg = msg.replace('@@@', formData.userId);
-    console.log(msg);
+    this.showAlert = false;
+    this.mqttData = undefined
     this.subscription = this._mqttService.observe('device/neosoft').subscribe((message: IMqttMessage) => {
       this.message = message.payload.toString();
-      this.loading = false;
-      console.log('msg>>>>>>>>>>>',this.message); 
-      quttData = this.message
-      // this.quttData = quttData.result;
-      console.log('data >>>>>>>>>>>', quttData)
-      // this.quttData = JSON.parse('{"' + this.quttData.replace(/,/g,'\",\"').replace(/^,\"|,\"$/g,"}"));
 
-      this.quttData = JSON.parse('{"' + quttData.replace(/^,\"|,\"$/g,"}"));
+      if(!this.message.includes('stauscode')){
+        mqttData = this.message;
+        this.mqttData = JSON.parse('{"' + mqttData.replace(/^,\"|,\"$/g,"}"));
+      }else{
+        let error = JSON.parse(this.message);
+        this.type = 'danger';
+        this.alertMessage = error.stausmsg;
+        this.showAlert = true;
 
-      console.log(this.message);
+      }
     });
-    this.unsafePublish('web/neosoft', msg.toString());
+
+        //Encrypt the smg with Base64
+        const key = CryptoJS.enc.Base64.parse("#base64Key#");
+        const iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+        console.log("encrypted Base64 iv ----------------->", iv.toString())
+        console.log("encrypted Base64 key ----------------->", key.toString())
+
+            //Impementing the Key and IV and encrypt the smg
+        const encrypted = CryptoJS.AES.encrypt(msg, key, {iv: iv});
+        console.log("encrypted smg ----------------->", encrypted.toString())
+        
+    this.unsafePublish('web/neosoft', encrypted.toString());
   }
 }
 

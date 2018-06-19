@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
-import { MttqService } from '../../../services';
-import { COMPANY_NAME, ADD_USER } from '../../../constants/company.constant';
+import { MttqService } from '../../services';
+import { ADD_USER, COMPANY_NAME } from '../../constants/company.constant';
+
 
 @Component({
   selector: 'app-user-create',

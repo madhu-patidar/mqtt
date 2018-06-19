@@ -1,0 +1,103 @@
+<div>   
+    <h2 align="center"> User Create</h2>
+    <form class="create-form-margin" [formGroup]="createForm" (ngSubmit)="onSubmit(createForm.value)">
+        <!-- <div class="form-group">
+            <label for="company">company</label>
+            <input type="text" formControlName="company" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company.errors }" />
+            <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+                <div *ngIf="f.company.errors.required">company is required</div>
+            </div>
+        </div> -->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="office">Office Location</label>
+            <div class="col-sm-9">
+                <input type="test" formControlName="office" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.office.errors }" placeholder="Rabale/Dadar" />
+                <div *ngIf="submitted && f.office.errors" class="invalid-feedback">
+                    <div *ngIf="f.office.errors.required">office is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="zone">Zone</label>
+            <div class="col-sm-9">
+                <input type="text" formControlName="zone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.zone.errors }" placeholder="Enter zone name" />
+                <div *ngIf="submitted && f.zone.errors" class="invalid-feedback">
+                    <div *ngIf="f.zone.errors.required">zone is required</div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="lock">Lock</label>
+            <div class="col-sm-9">
+                <input type="test" formControlName="lock" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lock.errors }" placeholder="Enter lock name"/>
+                <div *ngIf="submitted && f.lock.errors" class="invalid-feedback">
+                    <div *ngIf="f.lock.errors.required">lock is required</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="action">action</label>
+            <input type="text" formControlName="action" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.action.errors }" />
+            <div *ngIf="submitted && f.action.errors" class="invalid-feedback">
+                <div *ngIf="f.action.errors.required">action is required</div>
+            </div>
+        </div> -->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="userid">User Id</label>
+            <div class="col-sm-9">
+                <input type="test" formControlName="userid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userid.errors }" placeholder="Enter User Id"/>
+                <div *ngIf="submitted && f.userid.errors" class="invalid-feedback">
+                    <div *ngIf="f.userid.errors.required">userid is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="refuserid">Reference user Id</label>
+            <div class="col-sm-9">   
+                <input type="text" formControlName="refuserid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.refuserid.errors }"  placeholder="Enter Reference user Id" />
+                <div *ngIf="submitted && f.refuserid.errors" class="invalid-feedback">
+                    <div *ngIf="f.refuserid.errors.required">refuserid is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="username">Username</label>
+            <div class="col-sm-9">
+                <input type="test" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"  placeholder="Enter username" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">username is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="isactive">Status</label>
+            <!-- <input type="test" formControlName="isactive" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isactive.errors }" /> -->
+            <div class="col-sm-9">
+                <select class="form-control" id="sel1" formControlName="isactive" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isactive.errors }" >
+                    <option  [selected]="true" value="0">0</option>
+                    <option value="1">1</option>
+                </select>
+                <div *ngIf="submitted && f.isactive.errors" class="invalid-feedback">
+                    <div *ngIf="f.isactive.errors.required">satus is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="pin">Pin</label>
+            <div class="col-sm-9">
+                <input type="test" formControlName="pin" class="form-control" placeholder="Enter pin" [ngClass]="{ 'is-invalid': submitted && f.pin.errors }" />
+                <div *ngIf="submitted && f.pin.errors" class="invalid-feedback">
+                    <div *ngIf="f.pin.errors.required">pin is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-3 col-form-div"></div>
+            <div class="col-sm-9">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
