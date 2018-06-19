@@ -41,16 +41,10 @@ export class MqttCommunicationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      if(localStorage.getItem('username')){
       // throw new Error("Method not implemented.");
       this.mqttForm = this.formBuilder.group({
         userId: ['', Validators.required],
       });
-    }else{
-      // this.router.navigate(['/lifeguard/login']);
-    }
-
-   
   }
   
   onItemSelect(item:any){

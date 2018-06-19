@@ -31,9 +31,6 @@ export class OfficeCreateComponent implements OnInit {
     }
 
   ngOnInit() {
-      if(!localStorage.getItem('username')){
-          this.router.navigate(['home']);
-      }
       this.officeForm = this.formBuilder.group({
           name: ['', Validators.required]
       });

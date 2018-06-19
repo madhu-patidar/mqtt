@@ -29,7 +29,8 @@ import {
 import { 
   LocalAuthService, 
   AlertService, 
-  MttqService } from './services';
+  MttqService, 
+  AuthGuard} from './services';
 import { AlertMessageComponent } from './share';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
@@ -72,6 +73,12 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     BsDropdownModule.forRoot(),
     NgbDropdownModule.forRoot(),
   ],
-  providers: [LocalAuthService, AlertService, MqttService, MttqService],
+  providers: [
+    LocalAuthService, 
+    AlertService,
+     MqttService, 
+     MttqService,
+     AuthGuard
+    ],
 })
 export class LifeguardModule { }

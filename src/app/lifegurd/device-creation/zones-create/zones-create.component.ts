@@ -36,9 +36,6 @@ export class ZonesCreateComponent implements OnInit {
     }
 
   ngOnInit() {
-      if(!localStorage.getItem('username')){
-          this.router.navigate(['home']);
-      }
       this.zoneForm = this.formBuilder.group({
           name: ['', Validators.required]
       });

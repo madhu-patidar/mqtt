@@ -1,4 +1,4 @@
-$topnav-background-color: #222;
+$topnav-background-color:#f8f8f8;
 .sidebar {
     border-radius: 0;
     position: fixed;
@@ -33,11 +33,11 @@ $topnav-background-color: #222;
         }
         a:hover {
             background: darken($topnav-background-color, 5%);
-            color: #fff;
+            color:  #23527c;
         }
         a.router-link-active {
             background: darken($topnav-background-color, 5%);
-            color: #fff;
+            color: #23527c;
         }
         .header-fields {
             padding-top: 10px;
@@ -57,7 +57,7 @@ $topnav-background-color: #222;
             height: 50px;
             margin-bottom: 0;
             a {
-                color: #999;
+                color: #337ab7;
                 text-decoration: none;
                 font-weight: 400;
                 background: $topnav-background-color;
@@ -70,7 +70,7 @@ $topnav-background-color: #222;
             }
             a:hover,
             a:focus {
-                color: #fff;
+                color:  #23527c;
                 outline: none;
                 outline-offset: -2px;
             }
@@ -90,7 +90,7 @@ $topnav-background-color: #222;
                         color: #999;
                     }
                     a:hover {
-                        color: #fff;
+                        color:  #23527c;
                     }
                 }
                 .list-group-item:hover {
@@ -155,4 +155,16 @@ $topnav-background-color: #222;
 ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 1);
+}
+
+.sidebar[_ngcontent-c3] .list-group[_ngcontent-c3] a.list-group-item[_ngcontent-c3] {
+    /* background: #222; */
+    border: 0;
+    border-radius: 0;
+    color: #999;
+    text-decoration: none;
+}
+
+a{
+    color: #337ab7 !important;
 }

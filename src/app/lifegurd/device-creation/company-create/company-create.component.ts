@@ -25,9 +25,6 @@ export class CompanyCreateComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-      if(!localStorage.getItem('username')){
-          this.router.navigate(['home']);
-      }
       this.companyForm = this.formBuilder.group({
           name: ['', Validators.required]
       });

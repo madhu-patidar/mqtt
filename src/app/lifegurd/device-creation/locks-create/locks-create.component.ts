@@ -41,9 +41,6 @@ export class LocksCreateComponent implements OnInit {
     }
 
   ngOnInit() {
-      if(!localStorage.getItem('username')){
-          this.router.navigate(['home']);
-      }
       this.lockForm = this.formBuilder.group({
           name: ['', Validators.required]
       });

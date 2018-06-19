@@ -13,10 +13,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('username')){
-    }else{
-      this.router.navigate(['/lifeguard/login']);
-    }
+
   }
 
 }

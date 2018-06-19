@@ -12,6 +12,8 @@ import {
  } 
 from './';
 
+import { AuthGuard } from './services';
+
 import { LayoutComponent } from './layout.component';
 
 
@@ -21,14 +23,14 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
         { path: 'login', component: LoginComponent },
-        { path: 'home', component: HomeComponent },
-        { path: '', component: LoginComponent },
-        { path: 'mttq', component: MqttCommunicationComponent },
-        { path: 'create/user', component: UserCreateComponent },
-        { path: 'company/new', component: CompanyCreateComponent },
-        { path: 'office/new', component: OfficeCreateComponent },
-        { path: 'zone/new', component: ZonesCreateComponent },
-        { path: 'lock/new', component: LocksCreateComponent },
+        { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+        { path: '', component: LoginComponent, canActivate: [AuthGuard] },
+        { path: 'mttq', component: MqttCommunicationComponent, canActivate: [AuthGuard] },
+        { path: 'create/user', component: UserCreateComponent, canActivate: [AuthGuard] },
+        { path: 'company/new', component: CompanyCreateComponent, canActivate: [AuthGuard] },
+        { path: 'office/new', component: OfficeCreateComponent, canActivate: [AuthGuard] },
+        { path: 'zone/new', component: ZonesCreateComponent, canActivate: [AuthGuard] },
+        { path: 'lock/new', component: LocksCreateComponent, canActivate: [AuthGuard] },
       ]
     }
   ];

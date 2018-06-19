@@ -8,9 +8,10 @@
 </span>
 </div> -->
 
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}" style="background-color: #f8f8f8;
+border-color: #e7e7e7;">
   <div class="list-group">
-      <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <a routerLink="home" [routerLinkActive]="['router-link-active']" class="list-group-item">
           <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' }}
       </a>
       <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
